@@ -9,6 +9,9 @@ import Strategy.PromedioPonderado;
 import Strategy.PromedioSimple;
 import TemplateMethod.ReporteAlumno;
 import TemplateMethod.ReporteCurso;
+import Visitor.AlumnoBecado;
+import Visitor.AlumnoRegular;
+import Visitor.AplicarBeca;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -131,5 +134,16 @@ public class Main {
         System.out.println(rc.generarReporte("Reporte 1","Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem.","Generado el "+ LocalDate.now()));
         ReporteAlumno ra = new ReporteAlumno();
         System.out.println(ra.generarReporte("Reporte Alumno Fulanito","Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi.", "Generado el "+ LocalDate.now()));
+
+        System.out.println("\n\n----------Ejercicio 10----------");
+        //Visitor
+        //Crea nuevos métodos a clases existentes sin modificar las mismas
+        AlumnoRegular aregular = new AlumnoRegular(1234,"Menganito");
+        AlumnoBecado abecado = new AlumnoBecado(2345, "Pepe");
+        AplicarBeca beca = new AplicarBeca();
+        System.out.println(beca.visitar(aregular));
+        System.out.println("\n");
+        System.out.println(beca.visitar(abecado));
+
     }
 }
